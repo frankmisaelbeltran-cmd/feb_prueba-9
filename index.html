@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio id="page-music" autoplay loop preload="auto">
+    <source src="night.mp3" type="audio/mpeg">
+  </audio>
+
+  <!--Fondo de mariposas-->
+
+  <div id="butterfly-background"></div>
+
+
+
+  <!--Carta-->
+  <div class="book" id="book">
+
+    <div class="cover left">
+      <span class="heart left-heart">❤️</span>
+    </div>
+
+    <div class="cover right">
+      <span class="heart right-heart">❤️</span>
+    </div>
+
+    <div class="pages">
+      <h2>TE AMO JOSELIN</h2>
+      <p id="text"></p>
+      <button id="next-button" class="next-button" type="button" hidden>
+        Siguiente
+      </button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

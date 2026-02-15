@@ -1,0 +1,321 @@
+﻿body {
+  margin: 0;
+  background: #f2f2f2;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  font-family: "Georgia", serif;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.book {
+  width: 280px;
+  height: 380px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* PORTADAS */
+.cover {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  top: 0;
+  z-index: 3;
+  transition: transform 1.2s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Cara interna de la portada al abrir */
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.cover.left {
+  left: 0;
+  transform-origin: left;
+}
+
+.cover.right {
+  right: 0;
+  transform-origin: right;
+}
+
+.book.open .cover.left {
+  transform: rotateY(-160deg);
+}
+
+.book.open .cover.right {
+  transform: rotateY(160deg);
+}
+
+/* CORAZÃ“N */
+.heart {
+  position: absolute;
+  top: 50%;
+  font-size: 70px;
+  transform: translateY(-50%);
+}
+
+.left-heart {
+  right: -46px;             /* antes -35 */
+  clip-path: inset(0 48% 0 0);
+}
+
+.right-heart {
+  left: -46px;              /* antes -35 */
+  clip-path: inset(0 0 0 48%);
+}
+
+
+/* HOJAS */
+.pages {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  overflow-y: auto;
+  max-height: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ddd;
+  z-index: 1;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+
+  scrollbar-width: thin;
+  scrollbar-color: #e8a6c1 transparent;
+}
+
+.pages h2 {
+  margin-top: 40px;
+}
+
+.pages p {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 120px;
+  white-space: pre-line;
+}
+
+.next-button {
+  display: block;
+  margin: 22px auto 4px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7ea7, #ff5d8f);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  pointer-events: none;
+  box-shadow: 0 10px 24px rgba(255, 93, 143, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.35s ease;
+}
+
+.next-button.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.next-button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(255, 93, 143, 0.45);
+}
+
+/* Webkit */
+.pages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pages::-webkit-scrollbar-thumb {
+  background: #e8a6c1;
+  border-radius: 6px;
+}
+
+
+
+/*LATIDO */
+@keyframes heartbeat {
+  0%   { transform: translateY(-50%) scale(1); }
+  25%  { transform: translateY(-50%) scale(1.06); }
+  40%  { transform: translateY(-50%) scale(1); }
+  60%  { transform: translateY(-50%) scale(1.08); }
+  100% { transform: translateY(-50%) scale(1); }
+}
+
+/* Latido solo cuando estÃ¡ cerrada */
+.book:not(.open) .heart {
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+/* Al abrir: latido muerto (literalmente ðŸ˜Œ) */
+.book.open .heart {
+  animation: none;
+}
+
+
+
+/* FONDO */
+#butterfly-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* CADA MARIPOSA */
+.butterfly {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* SVG */
+.butterfly svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ALAS */
+.wing-left,
+.wing-right {
+  transform-origin: center;
+}
+
+
+/* MUY LEJANAS */
+.layer-ultra-far {
+  transform: scale(0.5);
+  opacity: 0.12;
+}
+.layer-ultra-far svg {
+  fill: rgba(255, 200, 215, 0.6);
+}
+
+/* LEJANAS */
+.layer-far {
+  transform: scale(0.7);
+  opacity: 0.2;
+}
+.layer-far svg {
+  fill: rgba(255, 170, 200, 0.7);
+}
+
+/* MEDIAS */
+.layer-mid {
+  transform: scale(1);
+  opacity: 0.32;
+}
+.layer-mid svg {
+  fill: rgba(255, 130, 170, 0.8);
+}
+
+/* CERCANAS */
+.layer-near {
+  transform: scale(1.3);
+  opacity: 0.45;
+}
+.layer-near svg {
+  fill: rgba(255, 90, 150, 0.9);
+}
+
+
+/* ðŸ“± SOLO MÃ“VIL */
+@media (max-width: 768px) {
+  body {
+    align-items: center;
+    padding: 12px;
+    perspective: 900px;
+  }
+
+  .book {
+    width: min(92vw, 360px);
+    height: min(78svh, 560px);
+    min-height: 420px;
+    margin: 0 auto;
+  }
+
+  .heart {
+    font-size: 58px;
+  }
+
+  .left-heart {
+    right: -38px;
+  }
+
+  .right-heart {
+    left: -38px;
+  }
+
+  .pages {
+    padding: 18px 16px 20px;
+  }
+
+  .pages h2 {
+    margin-top: 24px;
+    font-size: clamp(1rem, 4.8vw, 1.35rem);
+    text-align: center;
+  }
+
+  .pages p {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.55;
+    min-height: 180px;
+  }
+
+  .next-button {
+    width: min(250px, 92%);
+    margin-top: 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .book {
+    height: min(80svh, 520px);
+    min-height: 400px;
+  }
+
+  .heart {
+    font-size: 52px;
+  }
+
+  .left-heart {
+    right: -34px;
+  }
+
+  .right-heart {
+    left: -34px;
+  }
+
+  .pages {
+    padding: 16px 14px 18px;
+  }
+
+  .pages p {
+    font-size: 13.5px;
+  }
+}
+

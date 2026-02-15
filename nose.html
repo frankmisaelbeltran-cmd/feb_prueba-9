@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Animacion Pixel</title>
+  <link rel="stylesheet" href="nose.css">
+</head>
+<body>
+  <audio id="page-music" autoplay loop preload="auto">
+    <source src="nocturne.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="scene">
+    <div id="top-text" class="top-text"></div>
+    <a class="next-page-btn" href="Fogata.html">Siguiente</a>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <!-- Video oculto (solo para procesar frames) -->
+  <video
+    id="video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    style="display:none;">
+    <source src="animacion.mp4" type="video/mp4">
+  </video>
+
+  <script src="nose.js"></script>
+</body>
+</html>

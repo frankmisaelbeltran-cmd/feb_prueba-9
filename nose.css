@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 100%, #251038 0%, #14081f 48%, #06030b 100%);
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.scene::after {
+  content: none;
+}
+
+.top-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: #ffffff;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: clamp(2rem, 8vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.35),
+    0 0 22px rgba(255, 113, 182, 0.45);
+  opacity: 1;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.top-text.is-hidden {
+  opacity: 0;
+}
+
+.next-page-btn {
+  position: fixed;
+  right: clamp(14px, 3vw, 32px);
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 95, 170, 0.26),
+    rgba(123, 222, 255, 0.24)
+  );
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: clamp(0.84rem, 1.8vw, 0.98rem);
+  font-weight: 700;
+  box-shadow: 0 0 18px rgba(255, 95, 170, 0.35),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: transform 180ms ease, box-shadow 180ms ease,
+    background 180ms ease, opacity 260ms ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.next-page-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 95, 170, 0.4),
+    rgba(123, 222, 255, 0.38)
+  );
+  box-shadow: 0 0 24px rgba(255, 95, 170, 0.46),
+    inset 0 0 12px rgba(255, 255, 255, 0.26);
+}
+
+.next-page-btn:active {
+  transform: translateY(0);
+}
+
+.next-page-btn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .next-page-btn {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    padding: 0.64rem 0.98rem;
+    font-size: 0.8rem;
+  }
+}
+
+canvas {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+}

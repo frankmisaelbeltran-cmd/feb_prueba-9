@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Fogata</title>
+  <link rel="stylesheet" href="Fogata.css">
+</head>
+<body>
+  <video id="fogata-video" class="fogata-video" playsinline preload="auto" loop>
+    <source src="Fogata.mp4" type="video/mp4">
+    <track
+      id="sub-track"
+      kind="subtitles"
+      srclang="es"
+      label="Espanol"
+      src="subtitulos.vtt"
+      default>
+  </video>
+  <video id="overlay-video1" class="overlay-video" playsinline preload="auto" muted>
+    <source src="Video1.mp4" type="video/mp4">
+  </video>
+  <video id="overlay-video5" class="overlay-video" playsinline preload="auto" muted>
+    <source src="Video5.mp4" type="video/mp4">
+  </video>
+  <video id="overlay-video2" class="overlay-video" playsinline preload="auto" muted>
+    <source src="Video2.mp4" type="video/mp4">
+  </video>
+  <video id="overlay-video3" class="overlay-video" playsinline preload="auto" muted>
+    <source src="Video3.mp4" type="video/mp4">
+  </video>
+  <video id="overlay-video4" class="overlay-video" playsinline preload="auto" muted>
+    <source src="Video4.mp4" type="video/mp4">
+  </video>
+  <img id="overlay-foto1" class="overlay-photo" src="foto1.jpg" alt="Foto 1">
+  <img id="overlay-foto2" class="overlay-photo" src="foto2.jpg" alt="Foto 2">
+  <img id="overlay-foto3" class="overlay-photo" src="foto3.jpg" alt="Foto 3">
+  <audio id="musica" preload="auto" loop>
+    <source src="Musica.mp3" type="audio/mpeg">
+  </audio>
+  <div id="lyric-dim" class="lyric-dim"></div>
+  <div class="credits-overlay" aria-label="Creditos">
+    <p class="credits-label">CREADO POR</p>
+    <p class="credits-name">FRANK BELTRÁN</p>
+  </div>
+  <div id="subtitle-overlay" class="subtitle-overlay"></div>
+
+  <div id="start-overlay" class="start-overlay">
+    <button id="start-btn" class="start-btn" type="button">Iniciar</button>
+  </div>
+
+  <script src="Fogata.js"></script>
+</body>
+</html>
